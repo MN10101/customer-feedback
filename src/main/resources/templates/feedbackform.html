@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS for centering and shadow effect -->
+    <style>
+        body {
+            background-image: linear-gradient(to right bottom, #b9ddf4, #6ab0de);
+        }
+        .form-container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-container form {
+            width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-image: linear-gradient(to right bottom, #2980b9, #6ab0de);
+        }
+        .form-container h2 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+<div class="container form-container">
+    <form action="/submitfeedback" method="POST" th:object="${feedback}" class="needs-validation" novalidate>
+        <h2>Feedback Form</h2>
+        <div class="form-group">
+            <label for="name" style="color: #fff;">Name:</label>
+            <input type="text" id="name" name="name" th:field="*{name}" class="form-control" required>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: #fff;">Name error</div>
+        </div>
+        <div class="form-group">
+            <label for="email" style="color: #fff;">Email:</label>
+            <input type="email" id="email" name="email" th:field="*{email}" class="form-control" required>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: #fff;">Email error</div>
+        </div>
+        <div class="form-group">
+            <label for="visitDate" style="color: #fff;">Visit Date:</label>
+            <input type="date" id="visitDate" name="visitDate" th:field="*{visitDate}" class="form-control" required>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('visitDate')}" th:errors="*{visitDate}" style="color: #fff;">Visit Date error</div>
+        </div>
+        <div class="form-group">
+            <label for="rating" style="color: #fff;">Rating:</label>
+            <input type="number" id="rating" name="rating" th:field="*{rating}" class="form-control" min="1" max="5" required>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}" style="color: #fff;">Rating error</div>
+        </div>
+        <div class="form-group">
+            <label for="comments" style="color: #fff;">Comments:</label>
+            <textarea id="comments" name="comments" th:field="*{comments}" class="form-control" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+    </form>
+</div>
+</body>
+</html>
