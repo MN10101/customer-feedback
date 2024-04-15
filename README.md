@@ -26,10 +26,6 @@ This application allows customers to submit feedback about their experience. It 
 
 If you'd like to contribute to this project, feel free to fork the repository and submit a pull request with your changes.
 
-## Author
-
-John Doe
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
